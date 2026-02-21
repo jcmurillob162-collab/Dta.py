@@ -22,7 +22,9 @@ st.set_page_config(
 # ============================================================
 @st.cache_data
 def load_data():
-    df = pd.read_csv("call_center_data.csv")
+# ✅ DESPUÉS — funciona siempre, sin importar el nombre del repositorio
+import os
+df = pd.read_csv(os.path.join(os.path.dirname(__file__), "call_center_data.csv"))
     df["fecha"] = pd.to_datetime(df["fecha"])
     return df
 
