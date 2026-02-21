@@ -7,24 +7,14 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
-# ============================================================
-# CONFIGURACIÓN GENERAL DE LA PÁGINA
-# ============================================================
-st.set_page_config(
-    page_title="QA Call Center Dashboard",
-    page_icon="📊",
-    layout="wide"
-)
+import os                          # ← aquí, junto a los demás imports
 
 # ============================================================
 # CARGA DE DATOS
 # ============================================================
 @st.cache_data
 def load_data():
-# ✅ DESPUÉS — funciona siempre, sin importar el nombre del repositorio
-import os
-df = pd.read_csv(os.path.join(os.path.dirname(__file__), "call_center_data.csv"))
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), "call_center_data.csv"))
     df["fecha"] = pd.to_datetime(df["fecha"])
     return df
 
